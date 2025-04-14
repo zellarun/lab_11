@@ -8,7 +8,7 @@ module one_hot(
     wire Anext, Bnext, Cnext, Dnext, Enext;
     wire Astate, Bstate, Cstate, Dstate, Estate;
     
-    assign states = {Astate, Bstate, Cstate, Dstate, Estate};
+    assign states = {Estate, Dstate, Cstate, Bstate, Astate};
 
     dff Adff(
         .Default(1'b1),
@@ -45,9 +45,9 @@ module one_hot(
         .Q(Estate)
     );
 
-    assign z = Estate;
+    assign z = Estate | Cstate;
 
-    assign Anext = (~w & Bstate) | (w & Dstate);
+    assign Anext = 1'b0; //since A is only reached by reset
     assign Bnext = (~w & Cstate) | (w & Dstate);
     assign Cnext = (~w & Cstate) | (w & Dstate);
     assign Dnext = (~w & Bstate) | (w & Estate);
