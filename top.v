@@ -11,12 +11,6 @@ module top(
     .z(led[0]),
     .states(led[6:2]),
     .reset(btnU)
-    //Added
-//    .Astate(led[2]), 
-//    .Bstate(led[3]),
-//    .Cstate(led[4]),
-//    .Dstate(led[5]),
-//    .Estate(led[6])
 );
 
 binary bin(
@@ -24,6 +18,7 @@ binary bin(
     .clk(btnC),
     .z(led[1]),
     .reset(btnU)
+    .state_leds(led[9:7]) // connects state output
 );
 
 endmodule
