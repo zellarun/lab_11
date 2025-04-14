@@ -17,7 +17,7 @@ binary bin(
     .w(sw),
     .clk(btnC),
     .z(led[1]),
-    .reset(btnU)
+    .reset(btnU),
     .state_leds(led[9:7]) // connects state output
 );
 
