@@ -48,8 +48,8 @@ module one_hot(
     assign z = Estate | Cstate;
 
     assign Anext = 1'b0; //since A is only reached by reset
-    assign Bnext = (~w & Cstate) | (w & Dstate);
-    assign Cnext = (~w & Cstate) | (w & Dstate);
-    assign Dnext = (~w & Bstate) | (w & Estate);
-    assign Enext = (~w & Bstate) | (w & Estate);
+    assign Bnext = (~w & Astate) | (~w & Dstate) | (~w & Estate);
+    assign Cnext = (~w & Bstate) | (~w & Cstate);
+    assign Dnext = (w & Astate) | (w & Bstate) | (w & Cstate);
+    assign Enext = (w & Dstate) | (w & Estate);
 endmodule
